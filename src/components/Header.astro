@@ -15,16 +15,36 @@ const navItems = [
     <a href="/" class="logo">Lasya.</a>
 
     <div class="nav-links">
-        {navItems.map((item) => (
+      {navItems.map((item) => (
         <a href={item.href}>{item.name}</a>
-        ))}
+      ))}
     </div>
 
-    <button id="themeToggle" aria-label="Toggle theme">
+    <div class="nav-actions">
+      <button id="themeToggle" aria-label="Toggle theme">
         ☀️
-    </button>
-    </nav>
+      </button>
+
+      <button
+        id="menuToggle"
+        class="menu-toggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    {navItems.map((item) => (
+      <a href={item.href}>{item.name}</a>
+    ))}
+  </div>
 </header>
+
 <style>
   header {
     position: sticky;
@@ -45,26 +65,24 @@ const navItems = [
     justify-content: space-between;
     gap: 20px;
   }
-  .nav-links {
-    display: flex;
-    gap: 28px;
-    margin-left: auto;
-    }
 
   .logo {
     font-size: 1.4rem;
     font-weight: 700;
     color: var(--text);
+    text-decoration: none;
   }
 
   .nav-links {
     display: flex;
     gap: 28px;
+    margin-left: auto;
   }
 
   .nav-links a {
     color: var(--text-muted);
     font-size: 0.95rem;
+    text-decoration: none;
     transition: color 0.2s ease;
   }
 
@@ -72,41 +90,138 @@ const navItems = [
     color: var(--accent-light);
   }
 
-  @media (max-width: 650px) {
-    .nav-links {
-      gap: 14px;
-    }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
 
-    .nav-links a {
-      font-size: 0.85rem;
-    }
-    #themeToggle {
-        width: 40px;
-        height: 40px;
+  #themeToggle {
+    width: 40px;
+    height: 40px;
 
-        border: 1px solid var(--border);
-        border-radius: 50%;
+    border: 1px solid var(--border);
+    border-radius: 50%;
 
-        background: var(--surface);
-        color: var(--text);
+    background: var(--surface);
+    color: var(--text);
 
-        cursor: pointer;
-        font-size: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
 
     transition:
-        transform 0.2s ease,
-        border-color 0.2s ease,
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      background 0.2s ease;
+  }
+
+  #themeToggle:hover {
+    transform: rotate(15deg);
+    border-color: var(--accent);
+  }
+
+  .menu-toggle {
+    display: none;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: var(--surface);
+    cursor: pointer;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .menu-toggle span {
+    width: 18px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+
+    transition:
+      transform 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  /* =========================
+     MOBILE NAVIGATION
+     ========================= */
+
+  @media (max-width: 650px) {
+    .nav-links {
+      display: none;
+    }
+
+    .menu-toggle {
+      display: flex;
+    }
+
+    .mobile-menu {
+      width: min(1100px, 90%);
+      margin: 0 auto;
+      padding: 0 0 18px;
+
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      padding: 12px 14px;
+
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+
+      border-radius: 8px;
+
+      transition:
+        color 0.2s ease,
         background 0.2s ease;
     }
 
-    #themeToggle:hover {
-        transform: rotate(15deg);
-    border-color: var(--accent);
+    .mobile-menu a:hover {
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    /* Hamburger → X */
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
     }
   }
 </style>
+
 <script>
   const themeToggle = document.getElementById("themeToggle");
+  const menuToggle = document.getElementById("menuToggle");
+  const mobileMenu = document.querySelector(".mobile-menu");
+
+  /* =========================
+     THEME TOGGLE
+     ========================= */
 
   const savedTheme = localStorage.getItem("theme");
 
@@ -125,11 +240,58 @@ const navItems = [
     if (currentTheme === "light") {
       document.documentElement.removeAttribute("data-theme");
       localStorage.setItem("theme", "dark");
-      themeToggle.textContent = "☀️";
+
+      if (themeToggle) {
+        themeToggle.textContent = "☀️";
+      }
     } else {
       document.documentElement.setAttribute("data-theme", "light");
       localStorage.setItem("theme", "light");
-      themeToggle.textContent = "🌙";
+
+      if (themeToggle) {
+        themeToggle.textContent = "🌙";
+      }
     }
+  });
+
+  /* =========================
+     MOBILE MENU
+     ========================= */
+
+  menuToggle?.addEventListener("click", () => {
+    const isOpen = menuToggle.classList.toggle("active");
+
+    mobileMenu?.classList.toggle("active", isOpen);
+
+    menuToggle.setAttribute(
+      "aria-expanded",
+      String(isOpen)
+    );
+
+    menuToggle.setAttribute(
+      "aria-label",
+      isOpen
+        ? "Close navigation menu"
+        : "Open navigation menu"
+    );
+  });
+
+  /* Close menu after clicking a link */
+
+  mobileMenu?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      menuToggle?.classList.remove("active");
+      mobileMenu?.classList.remove("active");
+
+      menuToggle?.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+      menuToggle?.setAttribute(
+        "aria-label",
+        "Open navigation menu"
+      );
+    });
   });
 </script>
