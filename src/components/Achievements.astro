@@ -1,0 +1,72 @@
+---
+const achievements = [
+  "Track Winner — The Great Agent Hackathon 2026",
+  "1st Prize — Chatbot Buildathon, Techtatva-2k25 (IEEE-CIS, NBKRIST)",
+  '2nd Prize — Paper Presentation on "Basics of Probability", SRUJANA-2k24',
+  "2nd Prize — Codemania Debugging Contest (IEEE-SB-NBKRIST, DSA Domain)",
+  "Certificate of Excellence — Cyber Security Level-1 CTF Hackathon",
+  "Participant — Nexusverse-2.0 CodeQuest",
+];
+---
+
+<section id="achievements">
+  <p>Achievements</p>
+
+  <h2>Milestones along the way.</h2>
+
+  <div class="achievements-list">
+    {achievements.map((achievement) => (
+      <div>
+        <span>✦</span>
+        <p>{achievement}</p>
+      </div>
+    ))}
+  </div>
+</section>
+<style>
+  #achievements {
+    border-top: 1px solid var(--border);
+  }
+
+  #achievements h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-bottom: 45px;
+  }
+
+  .achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .achievements-list > div {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    padding: 18px 20px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .achievements-list > div:hover {
+    transform: translateX(5px);
+    border-color: var(--accent);
+  }
+
+  .achievements-list span {
+    color: var(--accent-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+
+  .achievements-list p {
+    font-size: 0.95rem;
+  }
+</style>

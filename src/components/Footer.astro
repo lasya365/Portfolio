@@ -1,0 +1,54 @@
+---
+---
+
+<footer>
+  <p>© 2026 Annam Lasya. Built with Astro.</p>
+
+  <div class="footer-links">
+    <a href="https://github.com/lasya365" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/lasya-annam" target="_blank">
+      LinkedIn
+    </a>
+  </div>
+</footer>
+
+<style>
+  footer {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+    padding: 30px 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    border-top: 1px solid var(--border);
+  }
+
+  footer p {
+    font-size: 0.85rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+  }
+
+  .footer-links a {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+  }
+
+  .footer-links a:hover {
+    color: var(--accent-light);
+  }
+
+  @media (max-width: 600px) {
+    footer {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+</style>

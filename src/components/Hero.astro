@@ -1,0 +1,84 @@
+---
+---
+
+<section class="hero">
+  <p class="intro">Hello, I'm</p>
+
+  <h1>Annam Lasya</h1>
+
+  <h2>CS Undergraduate · AI/ML · GenAI</h2>
+
+  <p class="description">
+    I build practical AI-powered applications and explore intelligent
+    systems using machine learning, generative AI, and modern development tools.
+  </p>
+
+  <div class="hero-buttons">
+    <a href="#projects">View My Projects</a>
+    <a href="https://github.com/lasya365" target="_blank">GitHub</a>
+  </div>
+</section>
+<style>
+  .hero {
+    min-height: calc(100vh - 70px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .intro {
+    color: var(--accent-light);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    letter-spacing: -0.05em;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-size: clamp(1.3rem, 3vw, 2rem);
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  .description {
+    max-width: 650px;
+    font-size: 1.1rem;
+    margin-bottom: 32px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .hero-buttons a {
+    padding: 12px 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .hero-buttons a:first-child {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+
+  .hero-buttons a:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-light);
+  }
+</style>

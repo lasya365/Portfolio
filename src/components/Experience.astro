@@ -1,0 +1,112 @@
+---
+const experiences = [
+  {
+    role: "GenAI with Prompt Engineering Intern",
+    organization: "Datavalley.ai",
+    period: "2026",
+    mode: "Remote",
+    description:
+      "Trained in Generative AI foundations, prompt engineering techniques, and LLM application patterns. Applied prompt-engineering methods to practical GenAI workflows and use cases.",
+  },
+  {
+    role: "AI & ML Virtual Intern",
+    organization: "SmartBridge Educational Services Pvt.ltd",
+    mode: "Remote",
+    description:
+        "This experience strengthened my understanding of AI and ML concepts through practical learning and hands-on exposure.",
+  },
+  {
+    role: "Virtual Intern — Internship 6.0",
+    organization: "Infosys Springboard",
+    period: "2026",
+    mode: "Remote",
+    description:
+      "Completed structured modules on Artificial Intelligence and cognitive systems, with a focus on AI-driven task planning and research workflows.",
+  },
+];
+---
+
+<section id="experience">
+  <p>Experience</p>
+
+  <h2>Where I've learned by building.</h2>
+
+  <div class="experience-list">
+    {experiences.map((experience) => (
+      <article>
+        <div>
+          <h3>{experience.role}</h3>
+          <p>{experience.organization}</p>
+        </div>
+
+        <div>
+          <p>{experience.period} · {experience.mode}</p>
+          <p>{experience.description}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+<style>
+  #experience {
+    border-top: 1px solid var(--border);
+  }
+
+  #experience h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-bottom: 45px;
+  }
+
+  .experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .experience-list article {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 40px;
+
+    padding: 30px;
+
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .experience-list article:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .experience-list h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+  }
+
+  .experience-list article > div:first-child p {
+    color: var(--accent-light);
+    font-weight: 600;
+  }
+
+  .experience-list article > div:last-child > p:first-child {
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+  }
+
+  .experience-list article > div:last-child > p:last-child {
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 700px) {
+    .experience-list article {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+  }
+</style>

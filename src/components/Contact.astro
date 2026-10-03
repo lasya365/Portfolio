@@ -1,0 +1,75 @@
+---
+---
+
+<section id="contact">
+  <p>Contact</p>
+
+  <h2>Let's connect.</h2>
+
+  <p class="contact-text">
+    I'm always interested in learning, building new projects, and connecting
+    with people working on interesting ideas.
+  </p>
+
+  <div class="contact-links">
+    <a href="mailto:lasyagoudannam@gmail.com">
+      Email
+    </a>
+
+    <a href="https://github.com/lasya365" target="_blank">
+      GitHub
+    </a>
+
+    <a href="https://www.linkedin.com/in/lasya-annam" target="_blank">
+      LinkedIn
+    </a>
+  </div>
+</section>
+<style>
+  #contact {
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+
+  #contact h2 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 20px;
+  }
+
+  .contact-text {
+    max-width: 600px;
+    margin: 0 auto 35px;
+    font-size: 1.05rem;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .contact-links a {
+    padding: 11px 20px;
+
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    background: var(--surface);
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .contact-links a:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+
+  .contact-links a:first-child {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+  }
+</style>

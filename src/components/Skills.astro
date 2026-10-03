@@ -1,0 +1,126 @@
+---
+const skillGroups = [
+  {
+    title: "Languages",
+    skills: ["Java", "Python", "SQL"],
+  },
+  {
+    title: "AI / ML & GenAI",
+    skills: [
+      "LangChain",
+      "RAG",
+      "FAISS",
+      "Groq LLM",
+      "Prompt Engineering",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+    ],
+  },
+  {
+    title: "Databases",
+    skills: ["DBMS", "MongoDB"],
+  },
+  {
+    title: "Web & Visualization",
+    skills: ["Streamlit", "Data Visualization"],
+  },
+  {
+    title: "Core CS & Tools",
+    skills: ["OOP", "Data Structures", "Database", "VS Code", "Git"],
+  },
+];
+---
+
+<section id="skills">
+  <p>Skills</p>
+
+  <h2>Technologies I work with.</h2>
+
+  <div class="skill-groups">
+    {skillGroups.map((group) => (
+      <div class="skill-group">
+        <h3>{group.title}</h3>
+
+        <div class="skills-list">
+          {group.skills.map((skill) => (
+            <span>{skill}</span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+<style>
+  #skills {
+    border-top: 1px solid var(--border);
+  }
+
+  #skills h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-bottom: 45px;
+  }
+
+  .skill-groups {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .skill-group {
+    padding: 30px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease;
+  }
+
+  .skill-group:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+  }
+
+  .skill-group h3 {
+    font-size: 1.15rem;
+    margin-bottom: 22px;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .skills-list span {
+    display: inline-block;
+
+    padding: 8px 14px;
+
+    background: var(--surface-light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+
+    color: var(--text);
+    font-size: 0.9rem;
+    font-weight: 500;
+
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .skills-list span:hover {
+    border-color: var(--accent);
+    color: var(--accent-light);
+  }
+
+  @media (max-width: 700px) {
+    .skill-groups {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

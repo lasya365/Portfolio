@@ -1,0 +1,89 @@
+---
+import ProjectCard from "./ProjectCard.astro";
+
+const projects = [
+  {
+    title: "GenAI Resume Screening & Interview Assistant",
+    description:
+      "An AI-powered interview platform that extracts skills from a candidate's resume, generates personalized interview questions, and provides LLM-based feedback and scoring.",
+    technologies: [
+      "Python",
+      "Streamlit",
+      "LangChain",
+      "FAISS",
+      "Groq LLM",
+    ],
+    github: "https://github.com/lasya365/GenAI-Resume-Screening",
+    featured: true,
+  },
+  {
+    title: "Rising Waters — AI Flood Risk Analysis",
+    description:
+      "An AI-driven flood-risk analysis tool that processes environmental data to identify flood-prone areas and presents insights through an interactive dashboard.",
+    technologies: [
+      "Python",
+      "Scikit-learn",
+      "Pandas",
+      "NumPy",
+      "Streamlit",
+    ],
+    github: "https://github.com/lasya365/Rising-Water",
+  },
+  {
+    title: "Docket — AI-Native Change Governance",
+    description:
+      "An AI-native change governance prototype designed to capture AI intent, session context, risk signals, provenance, and change-review information.",
+    technologies: [
+      "Python",
+      "AI Agents",
+      "Freshworks",
+      "MCP",
+    ],
+    github: "https://github.com/lasya365/Docket-",
+  },
+  {
+    title: "Autonomous Cognitive Engine",
+    description:
+      "A project exploring autonomous AI systems for long-horizon tasks, cognitive architecture, and AI-driven task planning.",
+    technologies: [
+      "Autonomous AI",
+      "Cognitive Architecture",
+      "Task Planning",
+    ],
+  },
+];
+---
+
+<section id="projects">
+  <p>Projects</p>
+
+  <h2>Things I've built and explored.</h2>
+
+  <div class="projects-grid">
+    {projects.map((project) => (
+      <ProjectCard {...project} />
+    ))}
+  </div>
+</section>
+<style>
+  #projects {
+    border-top: 1px solid var(--border);
+  }
+
+  #projects h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    margin-bottom: 45px;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  @media (max-width: 750px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

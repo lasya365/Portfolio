@@ -1,0 +1,97 @@
+---
+const { title, description, technologies, github, featured = false } = Astro.props;
+---
+
+<article class="project-card">
+  {featured && <span>Featured Project</span>}
+
+  <h3>{title}</h3>
+
+  <p>{description}</p>
+
+  <div class="technologies">
+    {technologies.map((technology) => (
+      <span>{technology}</span>
+    ))}
+  </div>
+
+  {github && (
+    <a href={github} target="_blank">
+      View on GitHub →
+    </a>
+  )}
+</article>
+<style>
+  .project-card {
+    position: relative;
+    padding: 30px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+      transform 0.25s ease,
+      border-color 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .project-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .project-card > span {
+    width: fit-content;
+    margin-bottom: 18px;
+    padding: 5px 10px;
+
+    background: rgba(139, 92, 246, 0.12);
+    color: var(--accent-light);
+
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 999px;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .project-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 14px;
+  }
+
+  .project-card p {
+    margin-bottom: 22px;
+    font-size: 0.95rem;
+  }
+
+  .technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: auto;
+    margin-bottom: 24px;
+  }
+
+  .technologies span {
+    padding: 5px 9px;
+    background: var(--surface-light);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+  }
+
+  .project-card a {
+    color: var(--accent-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  .project-card a:hover {
+    text-decoration: underline;
+  }
+</style>
